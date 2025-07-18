@@ -1,10 +1,10 @@
 import { Link, useLocation } from "react-router-dom";
-import { DivideIcon as LucideIcon } from "lucide-react";
+import { LucideIcon } from "lucide-react";
 
 interface NavLinkProps {
   to: string;
   children: React.ReactNode;
-  icon: LucideIcon;
+  icon: React.ComponentType<{ className?: string }>;
   onClick?: () => void;
 }
 

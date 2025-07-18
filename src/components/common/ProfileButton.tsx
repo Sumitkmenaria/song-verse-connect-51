@@ -1,10 +1,10 @@
 import { Button } from "@/components/ui/button";
-import { DivideIcon as LucideIcon } from "lucide-react";
+import { LucideIcon } from "lucide-react";
 
 interface ProfileButtonProps {
   onClick: () => void;
   children: React.ReactNode;
-  icon: LucideIcon;
+  icon: React.ComponentType<{ className?: string }>;
   variant?: "outline" | "default";
   disabled?: boolean;
 }

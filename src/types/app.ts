@@ -1,32 +1,28 @@
 // Shared application types
-export interface Song {
+export interface Story {
   id: string;
-  youtube_url: string;
-  youtube_id: string;
   title: string;
-  artist: string;
+  content: string;
   genre: string;
-  release_year?: number;
-  thumbnail_url?: string;
-  duration?: string;
-  submitter_id: string;
+  author_id: string;
   created_at: string;
   updated_at: string;
-  submitter_username?: string;
-  submitter_avatar?: string;
+  is_published: boolean;
+  word_count: number;
+  author_username?: string;
+  author_avatar?: string;
   average_rating: number;
   review_count: number;
-  personal_note?: string;
 }
 
-export interface SongsStats {
-  total_songs: number;
-  total_artists: number;
+export interface StoriesStats {
+  total_stories: number;
+  total_authors: number;
   total_reviews: number;
   average_rating: number;
 }
 
-export interface Playlist {
+export interface Collection {
   id: string;
   name: string;
   description?: string;
@@ -36,13 +32,13 @@ export interface Playlist {
   updated_at: string;
 }
 
-export interface PlaylistWithSongs extends Playlist {
-  songs: Array<{
+export interface CollectionWithStories extends Collection {
+  stories: Array<{
     id: string;
     title: string;
-    artist: string;
-    youtube_id: string;
-    thumbnail_url?: string;
+    author: string;
+    genre: string;
+    word_count: number;
     position: number;
   }>;
 }
@@ -55,9 +51,9 @@ export interface Review {
   reviewer_id: string;
   reviewer_username: string;
   reviewer_avatar?: string;
-  song_id: string;
-  song_title?: string;
-  song_artist?: string;
+  story_id: string;
+  story_title?: string;
+  story_author?: string;
   upvote_count?: number;
   comment_count?: number;
 }
@@ -76,22 +72,22 @@ export interface UserProfile {
 export interface UserStats {
   id: string;
   username: string;
-  songs_submitted: number;
+  stories_submitted: number;
   reviews_written: number;
   average_rating_given: number;
   following_count: number;
   followers_count: number;
 }
 
-export interface SubmittedSong {
+export interface SubmittedStory {
   id: string;
   title: string;
-  artist: string;
+  author: string;
   genre: string;
   average_rating: number;
   review_count: number;
   created_at: string;
-  youtube_id: string;
+  word_count: number;
 }
 
 export interface UserReview {
@@ -99,38 +95,34 @@ export interface UserReview {
   rating: number;
   review_text?: string;
   created_at: string;
-  song: {
+  story: {
     id: string;
     title: string;
-    artist: string;
-    youtube_id: string;
+    author: string;
+    genre: string;
   };
 }
 
-export interface SongData {
-  title: string;
-  artist: string;
-  thumbnail: string;
-  duration: string;
+export interface TopContributor {
+  id: string;
+  username: string;
+  stories_submitted: number;
+  reviews_written: number;
+  average_rating_given: number;
+  total_contributions: number;
+  avatar_url?: string;
 }
 
-export interface YouTubeVideoResponse {
-  items: Array<{
-    snippet: {
-      title: string;
-      channelTitle: string;
-      thumbnails: {
-        maxres?: { url: string };
-        high?: { url: string };
-        medium?: { url: string };
-        default: { url: string };
-      };
-    };
-    contentDetails: {
-      duration: string;
-    };
-  }>;
+export interface Comment {
+  id: string;
+  story_id: string;
+  user_id: string;
+  content: string;
+  created_at: string;
+  updated_at: string;
+  username?: string;
+  avatar_url?: string;
 }
 
-// Define allowed genre values to match database enum
-export type SongGenre = 'rock' | 'pop' | 'hip_hop' | 'electronic' | 'jazz' | 'classical' | 'country' | 'r_b' | 'indie' | 'alternative' | 'grunge' | 'metal' | 'folk' | 'blues' | 'reggae' | 'punk' | 'funk' | 'soul' | 'disco' | 'house' | 'techno' | 'dubstep' | 'ambient' | 'experimental' | 'other';
+// Define allowed genre values for stories
+export type StoryGenre = 'fiction' | 'non_fiction' | 'fantasy' | 'science_fiction' | 'mystery' | 'thriller' | 'romance' | 'horror' | 'adventure' | 'drama' | 'comedy' | 'historical' | 'biography' | 'poetry' | 'short_story' | 'novel' | 'novella' | 'memoir' | 'essay' | 'other';
