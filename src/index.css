@@ -1,0 +1,544 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. */
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 262 83% 58%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 262 83% 58%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    box-sizing: border-box;
+  }
+
+  html {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    /* Much smaller padding bottom for tiny mini player */
+    padding-bottom: 60px;
+  }
+
+  #root {
+    width: 100%;
+    max-width: 100vw;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Prevent horizontal overflow on all elements */
+  * {
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* Container fixes for mobile */
+  .container {
+    width: 100%;
+    max-width: 100vw;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    overflow-x: hidden;
+  }
+
+  /* Mobile responsive text and layout */
+  @media (max-width: 768px) {
+    * {
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      hyphens: auto;
+    }
+    
+    body {
+      font-size: 14px;
+      /* Much smaller bottom padding for tiny mobile mini player */
+      padding-bottom: 80px;
+    }
+
+    .container {
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
+    }
+
+    /* Fix card and component spacing on mobile */
+    .space-y-4 > * + * {
+      margin-top: 0.75rem;
+    }
+
+    .space-y-6 > * + * {
+      margin-top: 1rem;
+    }
+
+    /* Mobile button sizing */
+    button {
+      min-height: 24px;
+      padding: 0.25rem 0.5rem;
+    }
+
+    /* Mobile input sizing */
+    input, textarea, select {
+      min-height: 40px;
+      font-size: 16px; /* Prevents zoom on iOS */
+    }
+
+    /* Mobile-specific text sizing */
+    h1 {
+      font-size: 1.25rem !important;
+      line-height: 1.3 !important;
+    }
+
+    h2 {
+      font-size: 1.125rem !important;
+    }
+
+    h3 {
+      font-size: 1rem !important;
+    }
+
+    /* Mobile comment section optimizations */
+    .comment-section {
+      padding: 0.75rem;
+    }
+
+    .comment-item {
+      padding: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Mobile interaction buttons */
+    .interaction-buttons button {
+      min-height: 24px;
+      padding: 0.25rem 0.5rem;
+      font-size: 0.75rem;
+    }
+
+    /* Mobile review text wrapping */
+    .review-text {
+      word-break: break-word;
+      overflow-wrap: break-word;
+      white-space: pre-wrap;
+      max-width: 100%;
+    }
+
+    /* Mobile review cards */
+    .review-card {
+      max-width: 100%;
+      overflow: hidden;
+    }
+
+    .review-card * {
+      max-width: 100%;
+    }
+
+    /* Mobile mini player optimizations - MUCH SMALLER */
+    .mini-player-container {
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+  }
+
+  /* Fix for very small screens */
+  @media (max-width: 480px) {
+    .container {
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+    }
+
+    h1 {
+      font-size: 1.125rem !important;
+      line-height: 1.25 !important;
+    }
+
+    h2 {
+      font-size: 1rem !important;
+    }
+
+    h3 {
+      font-size: 0.875rem !important;
+    }
+
+    /* Extra small screen button sizing */
+    button {
+      min-height: 20px;
+      padding: 0.125rem 0.375rem;
+      font-size: 0.75rem;
+    }
+
+    /* Ensure text doesn't overflow on very small screens */
+    .review-text, .comment-text {
+      font-size: 0.75rem;
+      line-height: 1.4;
+    }
+
+    body {
+      /* Much smaller for very small screens */
+      padding-bottom: 90px;
+    }
+  }
+
+  /* iOS Safari specific fixes */
+  @supports (-webkit-touch-callout: none) {
+    body {
+      padding-bottom: calc(60px + env(safe-area-inset-bottom));
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding-bottom: calc(80px + env(safe-area-inset-bottom));
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding-bottom: calc(90px + env(safe-area-inset-bottom));
+      }
+    }
+  }
+}
+
+/* Enhanced button styles with consistent purple theme */
+@layer components {
+  .btn-primary {
+    @apply bg-purple-600 text-white hover:bg-purple-700 focus:bg-purple-700 active:bg-purple-800 border-purple-600 hover:border-purple-700 transition-all duration-200;
+  }
+  
+  .btn-secondary {
+    @apply bg-purple-100 text-purple-700 hover:bg-purple-200 focus:bg-purple-200 active:bg-purple-300 border-purple-200 hover:border-purple-300 transition-all duration-200;
+  }
+  
+  .btn-outline {
+    @apply border border-purple-600 bg-transparent text-purple-600 hover:bg-purple-600 hover:text-white focus:bg-purple-600 focus:text-white active:bg-purple-700 transition-all duration-200;
+  }
+  
+  .btn-ghost {
+    @apply text-purple-600 bg-transparent hover:bg-purple-100 focus:bg-purple-100 active:bg-purple-200 border-transparent transition-all duration-200;
+  }
+  
+  .btn-destructive {
+    @apply bg-red-600 text-white hover:bg-red-700 focus:bg-red-700 active:bg-red-800 border-red-600 hover:border-red-700 transition-all duration-200;
+  }
+
+  /* Override any white button styles */
+  button {
+    @apply transition-all duration-200;
+  }
+
+  button:not(.btn-destructive):not([class*="bg-red"]):not([class*="border-red"]) {
+    @apply text-purple-600 bg-purple-50 border-purple-200 hover:bg-purple-100 hover:border-purple-300;
+  }
+
+  button[class*="bg-white"], button[class*="text-black"] {
+    @apply bg-purple-600 text-white hover:bg-purple-700 border-purple-600 hover:border-purple-700 !important;
+  }
+
+  /* Ensure dropdowns and modals have proper backgrounds */
+  [role="dialog"], [role="menu"], [role="listbox"] {
+    @apply bg-black/90 backdrop-blur-md border-white/20;
+  }
+
+  /* Card improvements for mobile */
+  .card-responsive {
+    @apply w-full max-w-full overflow-hidden;
+  }
+
+  /* Text truncation helpers */
+  .text-truncate {
+    @apply truncate max-w-full;
+  }
+
+  .text-break {
+    word-break: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  /* Line clamp utilities for better mobile text display */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-4 {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Mobile-specific text wrapping */
+  .mobile-text-wrap {
+    word-break: break-word;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+    max-width: 100%;
+    overflow: hidden;
+  }
+}
+
+/* Additional mobile-specific fixes */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .flex-wrap {
+    flex-wrap: wrap;
+  }
+
+  .space-x-4 > * + * {
+    margin-left: 0.5rem;
+  }
+
+  .space-x-6 > * + * {
+    margin-left: 0.75rem;
+  }
+
+  /* Ensure buttons don't overflow */
+  .button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  /* Mobile-friendly card layout */
+  [class*="CardContent"] {
+    padding: 1rem;
+  }
+
+  /* Fix navigation spacing on mobile */
+  nav {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Enhanced mobile review cards */
+  .recent-review-card {
+    min-height: 280px;
+    padding: 1rem;
+  }
+
+  .recent-review-card .avatar {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .recent-review-card .rating-stars {
+    font-size: 1.25rem;
+  }
+
+  .recent-review-card .review-text {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin: 0.75rem 0;
+  }
+}
+
+/* Smooth animations for mini player */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(100%); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.mini-player-container {
+  animation: fade-in 0.3s ease-out;
+}
+
+/* Focus states for accessibility */
+button:focus-visible,
+[role="slider"]:focus-visible {
+  @apply outline-none ring-2 ring-purple-500 ring-offset-2 ring-offset-black;
+}
+
+/* Enhanced Slider component styling for better visibility and mobile touch */
+[data-radix-slider-root] {
+  @apply relative flex items-center select-none touch-none w-full h-5 cursor-pointer;
+}
+
+[data-radix-slider-track] {
+  @apply bg-white/30 relative grow rounded-full h-2 shadow-inner;
+}
+
+[data-radix-slider-range] {
+  @apply absolute bg-gradient-to-r from-purple-500 to-purple-600 rounded-full h-full shadow-sm;
+}
+
+[data-radix-slider-thumb] {
+  @apply block w-4 h-4 bg-white shadow-lg rounded-full border-2 border-purple-500 hover:bg-purple-50 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-black transition-all duration-150 cursor-grab active:cursor-grabbing;
+}
+
+[data-radix-slider-thumb]:hover {
+  @apply scale-110 shadow-xl;
+}
+
+[data-radix-slider-thumb]:active {
+  @apply scale-105;
+}
+
+/* Mobile-optimized slider for mini player */
+.mini-player-slider [data-radix-slider-root] {
+  @apply h-4; /* Smaller touch target for mobile */
+}
+
+.mini-player-slider [data-radix-slider-track] {
+  @apply bg-white/40 h-1;
+}
+
+.mini-player-slider [data-radix-slider-range] {
+  @apply bg-gradient-to-r from-purple-400 to-purple-500;
+}
+
+.mini-player-slider [data-radix-slider-thumb] {
+  @apply w-3 h-3 border-2 border-purple-400 bg-white shadow-md;
+}
+
+/* Mobile-specific slider enhancements */
+@media (max-width: 768px) {
+  .mini-player-slider [data-radix-slider-root] {
+    @apply h-4; /* Smaller for mobile */
+  }
+
+  .mini-player-slider [data-radix-slider-track] {
+    @apply h-1;
+  }
+
+  .mini-player-slider [data-radix-slider-thumb] {
+    @apply w-3 h-3;
+  }
+}
+
+/* Touch-friendly button styles for mobile */
+@media (max-width: 768px) {
+  button {
+    min-height: 24px; /* Much smaller for tiny mini player */
+    min-width: 24px;
+    touch-action: manipulation; /* Prevents double-tap zoom */
+  }
+
+  /* Specific mini player button sizing - MUCH SMALLER */
+  .mini-player-container button {
+    min-height: 24px;
+    min-width: 24px;
+  }
+}
+
+/* Prevent zoom on input focus for iOS */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  select, textarea, input[type="text"], input[type="password"], 
+  input[type="datetime"], input[type="datetime-local"], 
+  input[type="date"], input[type="month"], input[type="time"], 
+  input[type="week"], input[type="number"], input[type="email"], 
+  input[type="url"], input[type="search"], input[type="tel"], 
+  input[type="color"] {
+    font-size: 16px !important;
+  }
+}
+
+/* Safe area insets for devices with notches */
+@supports (padding: max(0px)) {
+  .mini-player-container {
+    padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
+  }
+}
